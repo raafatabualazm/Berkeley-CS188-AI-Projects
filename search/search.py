@@ -92,7 +92,7 @@ def depthFirstSearch(problem):
     state = problem.getStartState()
     actions = defaultdict(list)
     succs = problem.getSuccessors(state)
-    visited.append(state[0])
+    visited.append(state)
     for succ in succs:
         if succ[0] not in visited:
             actions[succ[0]].append(succ[1])
@@ -117,7 +117,7 @@ def breadthFirstSearch(problem):
     visited = []
     queue = util.Queue()
     state = problem.getStartState()
-    visited.append(state[0])
+    visited.append(state)
     succs = problem.getSuccessors(state)
     actions = defaultdict(list)
     for succ in succs:
@@ -142,13 +142,13 @@ def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
     def cost(state):
-        return problem.getCostOfActions(actions[state])
+        return problem.getCostOfActions(actions[state[0]])
 
 
     pq = util.PriorityQueueWithFunction(cost)
     visited = []
     state = problem.getStartState()
-    visited.append(state[0])
+    visited.append(state)
     succs = problem.getSuccessors(state)
     actions = defaultdict(list)
     for succ in succs:
@@ -180,12 +180,12 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
     def cost(state):
-        return problem.getCostOfActions(actions[state]) + heuristic(state, problem)
+        return problem.getCostOfActions(actions[state[0]]) + heuristic(state[0], problem)
 
     pq = util.PriorityQueueWithFunction(cost)
     visited = []
     state = problem.getStartState()
-    visited.append(state[0])
+    visited.append(state)
     succs = problem.getSuccessors(state)
     actions = defaultdict(list)
     for succ in succs:
