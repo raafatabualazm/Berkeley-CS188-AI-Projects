@@ -142,7 +142,7 @@ def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
     def cost(state):
-        problem.getCostOfActions(actions[state])
+        return problem.getCostOfActions(actions[state])
 
 
     pq = util.PriorityQueueWithFunction(cost)
@@ -180,7 +180,7 @@ def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
     def cost(state):
-        problem.getCostOfActions(actions[state]) + heuristic(state, problem)
+        return problem.getCostOfActions(actions[state]) + heuristic(state, problem)
 
     pq = util.PriorityQueueWithFunction(cost)
     visited = []
