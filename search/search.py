@@ -101,7 +101,8 @@ def depthFirstSearch(problem):
             succs = problem.getSuccessors(state)
             for succ in succs:
                 if succ[0] not in visited:
-                    actions[succ[0]] += actions[state]
+                    if state != problem.getStartState():
+                        actions[succ[0]] = actions[state]
                     actions[succ[0]].append(succ[1])
                     fringe.push(succ)
     return False
@@ -123,7 +124,8 @@ def breadthFirstSearch(problem):
             succs = problem.getSuccessors(state)
             for succ in succs:
                 if succ[0] not in visited:
-                    actions[succ[0]] += actions[state]
+                    if state != problem.getStartState():
+                        actions[succ[0]] = actions[state]
                     actions[succ[0]].append(succ[1])
                     fringe.push(succ)
     return False
@@ -149,7 +151,8 @@ def uniformCostSearch(problem):
             succs = problem.getSuccessors(state)
             for succ in succs:
                 if succ[0] not in visited:
-                    actions[succ[0]] += actions[state]
+                    if state != problem.getStartState():
+                        actions[succ[0]] = actions[state]
                     actions[succ[0]].append(succ[1])
                     fringe.push(succ)
     return False
@@ -181,7 +184,8 @@ def aStarSearch(problem, heuristic=nullHeuristic):
             succs = problem.getSuccessors(state)
             for succ in succs:
                 if succ[0] not in visited:
-                    actions[succ[0]] += actions[state]
+                    if state != problem.getStartState():
+                        actions[succ[0]] = actions[state]
                     actions[succ[0]].append(succ[1])
                     fringe.push(succ)
     return False
